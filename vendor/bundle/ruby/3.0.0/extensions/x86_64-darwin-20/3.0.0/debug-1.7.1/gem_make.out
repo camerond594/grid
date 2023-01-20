@@ -1,0 +1,16 @@
+current directory: /Users/cameronday/grid/vendor/bundle/ruby/3.0.0/gems/debug-1.7.1/ext/debug
+/Users/cameronday/.rubies/ruby-3.0.4/bin/ruby -I /Users/cameronday/.rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20230119-18604-tgz2sx.rb extconf.rb
+creating Makefile
+
+current directory: /Users/cameronday/grid/vendor/bundle/ruby/3.0.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= clean
+
+current directory: /Users/cameronday/grid/vendor/bundle/ruby/3.0.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/cameronday/grid/vendor/bundle/ruby/3.0.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20230119-18604-fr8fgc/debug
