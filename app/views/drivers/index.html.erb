@@ -1,0 +1,9 @@
+<table>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <% driver.attributes.each do |attribute| %>
+          <td><%= attribute.last %></td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>

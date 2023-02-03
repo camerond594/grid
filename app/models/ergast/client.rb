@@ -2,9 +2,10 @@ require "uri"
 require "net/http"
 
 class Ergast::Client
-  API_URL = "http://ergast.com/api/f1"
+  HOST = "ergast.com"
+  API_URL = "http://#{HOST}/api/f1"
 
-  def initialize(connection:)
+  def initialize(connection: Net::HTTP.new(HOST))
     @connection = connection
   end
 
