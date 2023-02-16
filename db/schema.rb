@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_191323) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_191530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "driver_seasons", force: :cascade do |t|
+    t.bigint "driver_id"
+    t.bigint "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_driver_seasons_on_driver_id"
+    t.index ["season_id"], name: "index_driver_seasons_on_season_id"
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string "driver_id"
@@ -23,6 +32,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_191323) do
     t.string "family_name"
     t.date "date_of_birth"
     t.string "nationality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "year"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -16,4 +16,12 @@ class Ergast::Client
 
     JSON.parse(response.read_body)
   end
+
+  def get_seasons
+    url = URI("#{API_URL}/seasons.json")
+    request = Net::HTTP::Get.new(url)
+    response = @connection.request(request)
+
+    JSON.parse(response.read_body)
+  end
 end

@@ -21,4 +21,18 @@ RSpec.describe Ergast::Client, type: :model do
       )
     end
   end
+
+  describe "#get_seasons" do
+    subject { described_class.new.get_seasons }
+
+    it "gets the seasons", :vcr do
+      response = subject["MRData"]["SeasonTable"]
+      expect(response["Seasons"].first).to include(
+        {
+          "season"=> "1950",
+          "url"=> "http://en.wikipedia.org/wiki/1950_Formula_One_season"
+        }
+      )
+    end
+  end
 end
