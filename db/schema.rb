@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_191530) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_193203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "constructors", force: :cascade do |t|
+    t.string "name"
+    t.string "nationality"
+    t.string "url"
+  end
 
   create_table "driver_seasons", force: :cascade do |t|
     t.bigint "driver_id"
     t.bigint "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "constructor_id"
+    t.index ["constructor_id"], name: "index_driver_seasons_on_constructor_id"
     t.index ["driver_id"], name: "index_driver_seasons_on_driver_id"
     t.index ["season_id"], name: "index_driver_seasons_on_season_id"
   end
@@ -43,4 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_191530) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "driver_seasons", "constructors"
 end
