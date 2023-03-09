@@ -7,7 +7,7 @@ class Ergast::PullSeasons
     seasons = @client.get_seasons["MRData"]["SeasonTable"]["Seasons"]
     
     seasons.each do |season|
-      Season.create({
+      Season.find_or_create_by({
         year: season["season"],
         url: season["url"]
       })

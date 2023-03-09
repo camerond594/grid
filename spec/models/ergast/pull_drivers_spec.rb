@@ -5,6 +5,7 @@ RSpec.describe Ergast::PullDrivers, type: :model do
     subject { described_class.new(client: client).record_drivers(year: 2022) }
 
     let(:client) { instance_double(Ergast::Client) }
+    let!(:season) { Season.create(year: 2022, url: "a-url") }
 
     it "records the drivers for the given year" do
       allow(client).to receive(:get_drivers).and_return(
@@ -48,6 +49,8 @@ RSpec.describe Ergast::PullDrivers, type: :model do
       expect(driver.family_name).to eq "Vettel"
       expect(driver.nationality).to eq "German"
       expect(driver.date_of_birth.to_s).to eq "1987-07-03"
+
+      expect(driver.seasons).to include season
     end
   end
 end
