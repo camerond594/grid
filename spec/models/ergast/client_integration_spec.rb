@@ -35,4 +35,20 @@ RSpec.describe Ergast::Client, type: :model do
       )
     end
   end
+
+  describe "#get_constuctors_for_driver" do
+    subject { described_class.new.get_constuctors_for_driver(driver_id: "alonso") }
+
+    it "gets all constructors for a given driver", :vcr do
+      response = subject["MRData"]["ConstructorTable"]
+      expect(response["Constructors"].first).to include(
+        {
+          "constructorId" => "alpine",
+          "name" => "Alpine F1 Team",
+          "nationality" => "French",
+          "url" => "http://en.wikipedia.org/wiki/Alpine_F1_Team"
+        }
+      )
+    end
+  end
 end
