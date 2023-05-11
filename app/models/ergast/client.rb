@@ -25,6 +25,14 @@ class Ergast::Client
     JSON.parse(response.read_body)
   end
 
+  def get_constructors
+    url = URI("#{API_URL}/constructors.json")
+    request = Net::HTTP::Get.new(url)
+    response = @connection.request(request)
+
+    JSON.parse(response.read_body)
+  end
+
   def get_constuctors_for_driver(driver_id:)
     url = URI("#{API_URL}/drivers/#{driver_id}/constructors.json")
     request = Net::HTTP::Get.new(url)

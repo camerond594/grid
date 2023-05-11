@@ -39,6 +39,38 @@ RSpec.describe Ergast::Client, type: :model do
     end
   end
 
+  describe "#get_constuctors" do
+    subject { described_class.new(connection: connection).get_constructors }
+
+    let(:connection) { instance_double(Net::HTTP) }
+    let(:response) { instance_double(Net::HTTPResponse, read_body: '{"constructors": [{"constructorId": "aston_martin", "url": "http://en.wikipedia.org/wiki/Aston_Martin_in_Formula_One", "name": "Aston Martin", "nationality": "British"}]}' ) }
+
+    it "makes a GET on the correct URL" do
+      expect(connection).to receive(:request) do |request|
+        expect(request).to be_a(Net::HTTP::Get)
+        expect(request.uri.to_s).to eq "http://ergast.com/api/f1/constructors.json"
+      end.and_return(response)
+      
+      subject
+    end
+
+    it "returns the appropriate body" do
+      allow(connection).to receive(:request).and_return(response)
+
+      expect(subject).to eq({
+        "constructors" => [
+            {
+              "constructorId" => "aston_martin",
+              "url" => "http://en.wikipedia.org/wiki/Aston_Martin_in_Formula_One",
+              "name" => "Aston Martin",
+              "nationality" => "British"
+            }
+          ]
+        }
+      )
+    end
+  end
+
   describe "#get_constuctors_for_driver" do
     subject { described_class.new(connection: connection).get_constuctors_for_driver(driver_id: driver_id) }
 
