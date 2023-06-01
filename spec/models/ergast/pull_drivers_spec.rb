@@ -6,6 +6,7 @@ RSpec.describe Ergast::PullDrivers, type: :model do
 
     let(:client) { instance_double(Ergast::Client) }
     let!(:season) { Season.create(year: 2022, url: "a-url") }
+    let!(:constructor) { Constructor.create(name: "Aston Martin", url: "a-url") }
 
     it "records the drivers for the given year" do
       allow(client).to receive(:get_drivers).and_return(
@@ -29,6 +30,27 @@ RSpec.describe Ergast::PullDrivers, type: :model do
                   "familyName"=>"Vettel",
                   "dateOfBirth"=>"1987-07-03",
                   "nationality"=>"German"
+                }
+              ]
+            }
+          }
+        }
+      )
+
+      allow(client).to receive(:get_constuctors_for_driver).and_return(
+        {
+          "MRData"=> {
+            "xmlns"=>"http://ergast.com/mrd/1.5",
+            "series"=>"f1",            
+            "url"=>"http://ergast.com/api/f1/2022/drivers.json",
+            "limit"=>"30",             
+            "offset"=>"0",             
+            "total"=>"22",             
+            "ConstructorTable"=> {
+              "season"=>"2022",        
+              "Constructor"=> [
+                {
+                  "Constructor Name" => "Aston Martin"
                 }
               ]
             }

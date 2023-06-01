@@ -72,16 +72,17 @@ RSpec.describe Ergast::Client, type: :model do
   end
 
   describe "#get_constuctors_for_driver" do
-    subject { described_class.new(connection: connection).get_constuctors_for_driver(driver_id: driver_id) }
+    subject { described_class.new(connection: connection).get_constuctors_for_driver(year: year, driver_id: driver_id) }
 
     let(:connection) { instance_double(Net::HTTP) }
     let(:response) { instance_double(Net::HTTPResponse, read_body: '{"constructors": [{"constructorId": "aston_martin", "url": "http://en.wikipedia.org/wiki/Aston_Martin_in_Formula_One", "name": "Aston Martin", "nationality": "British"}]}' ) }
     let(:driver_id) { "alonso" }
+    let(:year) { 2022 }
 
     it "makes a GET on the correct URL" do
       expect(connection).to receive(:request) do |request|
         expect(request).to be_a(Net::HTTP::Get)
-        expect(request.uri.to_s).to eq "http://ergast.com/api/f1/drivers/alonso/constructors.json"
+        expect(request.uri.to_s).to eq "http://ergast.com/api/f1/2022/drivers/alonso/constructors.json"
       end.and_return(response)
       
       subject
