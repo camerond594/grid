@@ -19,10 +19,22 @@ class Ergast::PullDrivers
           nationality: driver["nationality"],
         }
       )
-      constructor = @client.get_constuctors_for_driver(year: year, driver_id: driver["driverId"])["MRData"]["ConstructorTable"]["Constructor"][0]
-      constructor = Constructor.find_by(name: constructor["Constructor Name"])
       season = Season.find_by(year: year)
-      new_driver.driver_seasons.create(season: season, constructor: constructor)
+      driver_season = new_driver.driver_seasons.find_by(season: season)
+
+      if driver_season.nil?
+        constructors_data = @client.get_constuctors_for_driver(year: year, driver_id: driver["driverId"])["MRData"]["ConstructorTable"]["Constructors"]
+
+        if constructors_data.any?
+          constructor = Constructor.find_by(name: constructors_data[0]["name"])
+        end
+      end
+
+      unless driver_season
+        new_driver.driver_seasons.create(season: season, constructor: constructor)
+      end
+
+      new_driver.save
     end
   end
 end

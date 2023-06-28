@@ -4,6 +4,9 @@
         <% driver.attributes.each do |attribute| %>
           <td><%= attribute.last %></td>
         <% end %>
+        <td>
+          <%= driver.constructors.map(&:name).uniq.join(", ") %>
+        </td>
       </tr>
     <% end %>
 </table>

@@ -48,7 +48,7 @@ RSpec.describe Ergast::Client, type: :model do
     it "makes a GET on the correct URL" do
       expect(connection).to receive(:request) do |request|
         expect(request).to be_a(Net::HTTP::Get)
-        expect(request.uri.to_s).to eq "http://ergast.com/api/f1/constructors.json"
+        expect(request.uri.to_s).to eq "http://ergast.com/api/f1/constructors.json?limit=1000"
       end.and_return(response)
       
       subject

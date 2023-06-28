@@ -48,9 +48,9 @@ RSpec.describe Ergast::PullDrivers, type: :model do
             "total"=>"22",             
             "ConstructorTable"=> {
               "season"=>"2022",        
-              "Constructor"=> [
+              "Constructors"=> [
                 {
-                  "Constructor Name" => "Aston Martin"
+                  "name" => "Aston Martin"
                 }
               ]
             }
@@ -73,6 +73,7 @@ RSpec.describe Ergast::PullDrivers, type: :model do
       expect(driver.date_of_birth.to_s).to eq "1987-07-03"
 
       expect(driver.seasons).to include season
+      expect(driver.constructors).to include constructor
     end
   end
 end

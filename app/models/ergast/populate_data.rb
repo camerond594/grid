@@ -6,7 +6,7 @@ class Ergast::PopulateData
   def populate
     seasons = Ergast::PullSeasons.new(client: @client).record_seasons
     constructors = Ergast::PullConstructors.new(client: @client).record_constructors
-    (2020..2022).each do |year|
+    (2021..2022).each do |year|
       Ergast::PullDrivers.new(client: @client).record_drivers(year: year)
     end
   end

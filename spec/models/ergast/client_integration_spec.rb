@@ -37,7 +37,7 @@ RSpec.describe Ergast::Client, type: :model do
   end
 
   describe "#get_constuctors_for_driver" do
-    subject { described_class.new.get_constuctors_for_driver(driver_id: "alonso") }
+    subject { described_class.new.get_constuctors_for_driver(year: 2022, driver_id: "alonso") }
 
     it "gets all constructors for a given driver", :vcr do
       response = subject["MRData"]["ConstructorTable"]

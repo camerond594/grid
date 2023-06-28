@@ -7,10 +7,12 @@ RSpec.describe Ergast::PopulateData, type: :model do
     let(:client) { instance_double(Ergast::Client) }
     let(:pull_seasons) { instance_double(Ergast::PullSeasons, record_seasons:nil) }
     let(:pull_constructors) { instance_double(Ergast::PullConstructors, record_constructors:nil) }
+    let(:pull_drivers) { instance_double(Ergast::PullDrivers, record_drivers:nil) }
 
     before do
       allow(Ergast::PullConstructors).to receive(:new).with(client: client).and_return(pull_constructors)
       allow(Ergast::PullSeasons).to receive(:new).with(client: client).and_return(pull_seasons)
+      allow(Ergast::PullDrivers).to receive(:new).with(client: client).and_return(pull_drivers)
     end
 
     it "calls the PullSeasons class" do

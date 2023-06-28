@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ergast.com/api/f1/drivers/alonso/constructors.json
+    uri: http://ergast.com/api/f1/2022/drivers/alonso/constructors.json
     body:
       encoding: US-ASCII
       string: ''
@@ -21,23 +21,32 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 16 Mar 2023 18:43:46 GMT
+      - Wed, 28 Jun 2023 01:49:38 GMT
       Server:
-      - Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16
+      - Apache/2.4.53 (AlmaLinux) OpenSSL/3.0.7
       X-Powered-By:
-      - PHP/5.4.16
+      - PHP/8.0.27
       Access-Control-Allow-Origin:
       - "*"
       Cache-Control:
       - public, max-age=300
-      Content-Length:
-      - '1001'
       Content-Type:
       - application/json; charset=utf-8
+      X-Varnish:
+      - '29761228'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish (Varnish/6.6)
+      Accept-Ranges:
+      - bytes
+      Connection:
+      - keep-alive
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.5","series":"f1","url":"http://ergast.com/api/f1/drivers/alonso/constructors.json","limit":"30","offset":"0","total":"6","ConstructorTable":{"driverId":"alonso","Constructors":[{"constructorId":"alpine","url":"http:\/\/en.wikipedia.org\/wiki\/Alpine_F1_Team","name":"Alpine
-        F1 Team","nationality":"French"},{"constructorId":"aston_martin","url":"http:\/\/en.wikipedia.org\/wiki\/Aston_Martin_in_Formula_One","name":"Aston
-        Martin","nationality":"British"},{"constructorId":"ferrari","url":"http:\/\/en.wikipedia.org\/wiki\/Scuderia_Ferrari","name":"Ferrari","nationality":"Italian"},{"constructorId":"mclaren","url":"http:\/\/en.wikipedia.org\/wiki\/McLaren","name":"McLaren","nationality":"British"},{"constructorId":"minardi","url":"http:\/\/en.wikipedia.org\/wiki\/Minardi","name":"Minardi","nationality":"Italian"},{"constructorId":"renault","url":"http:\/\/en.wikipedia.org\/wiki\/Renault_in_Formula_One","name":"Renault","nationality":"French"}]}}}'
-  recorded_at: Thu, 16 Mar 2023 18:43:47 GMT
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.5","series":"f1","url":"http://ergast.com/api/f1/2022/drivers/alonso/constructors.json","limit":"30","offset":"0","total":"1","ConstructorTable":{"season":"2022","driverId":"alonso","Constructors":[{"constructorId":"alpine","url":"http:\/\/en.wikipedia.org\/wiki\/Alpine_F1_Team","name":"Alpine
+        F1 Team","nationality":"French"}]}}}'
+  recorded_at: Wed, 28 Jun 2023 01:49:40 GMT
 recorded_with: VCR 6.1.0
